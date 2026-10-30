@@ -1,0 +1,5 @@
+C:\Users\Sachin\Desktop\dotNet Internship\ExpenseTracker\ExpenseTracker\bin\ExpenseTracker.dll
+C:\Users\Sachin\Desktop\dotNet Internship\ExpenseTracker\ExpenseTracker\bin\ExpenseTracker.pdb
+C:\Users\Sachin\Desktop\dotNet Internship\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.dll
+C:\Users\Sachin\Desktop\dotNet Internship\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.pdb
+C:\Users\Sachin\Desktop\dotNet Internship\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.csprojResolveAssemblyReference.cache

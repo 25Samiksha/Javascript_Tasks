@@ -1,0 +1,263 @@
+﻿
+<%@ Master Language="C#" AutoEventWireup="true"
+    CodeBehind="Site1.Master.cs"
+    Inherits="ExpenseTracker.Site1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Expense Tracker | My Finances</title>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3f6fb;
+            color: #263445;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, #20354f, #17283d);
+            color: #ffffff;
+            padding: 28px 18px;
+            min-height: 100vh;
+        }
+
+        /* Brand */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 8px 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            margin-bottom: 28px;
+        }
+
+        .brand-icon {
+            width: 43px;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #4c9aff;
+            color: #ffffff;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .brand-text h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .brand-text p {
+            margin: 5px 0 0;
+            font-size: 11px;
+            color: #aebfd3;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation heading */
+        .nav-heading {
+            padding: 0 12px;
+            margin: 0 0 12px;
+            color: #91a7c0;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation links */
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #c7d4e4;
+            text-decoration: none;
+            padding: 13px 14px;
+            margin-bottom: 7px;
+            border-radius: 9px;
+            font-size: 14px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sidebar nav a:hover {
+            background: rgba(255,255,255,0.09);
+            color: #ffffff;
+        }
+
+        .sidebar nav a.active {
+            background: #347fce;
+            color: #ffffff;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+        }
+
+        .nav-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        /* Sidebar footer */
+        .sidebar-footer {
+            margin-top: 40px;
+            padding: 16px 12px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            color: #91a7c0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* Main content */
+        .page-content {
+            flex: 1;
+            min-width: 0;
+            padding: 30px;
+        }
+
+        /* Responsive layout */
+        @media screen and (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                padding: 18px;
+            }
+
+            .brand {
+                margin-bottom: 18px;
+                padding-bottom: 18px;
+            }
+
+            .sidebar nav a {
+                display: inline-flex;
+                margin: 3px;
+                padding: 10px;
+            }
+
+            .nav-heading,
+            .sidebar-footer {
+                display: none;
+            }
+
+            .page-content {
+                padding: 18px;
+            }
+        }
+
+        /* Print report without sidebar */
+        @media print {
+            .sidebar {
+                display: none !important;
+            }
+
+            .layout {
+                display: block !important;
+                min-height: 0 !important;
+            }
+
+            .page-content {
+                padding: 0 !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+
+        <div class="layout">
+
+            <aside class="sidebar">
+
+                <div class="brand">
+                    <div class="brand-icon">&#8377;</div>
+
+                    <div class="brand-text">
+                        <h2>SpendWise</h2>
+                        <p>Expense Tracker</p>
+                    </div>
+                </div>
+
+                <div class="nav-heading">Main Menu</div>
+
+                <nav>
+                    <a href="Dashboard.aspx"
+                       class='<%= GetActiveClass("Dashboard.aspx") %>'>
+                        <span class="nav-icon">&#9633;</span>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="ExpenseTracker.aspx"
+                       class='<%= GetActiveClass("ExpenseTracker.aspx") %>'>
+                        <span class="nav-icon">&#8645;</span>
+                        <span>Expenses</span>
+                    </a>
+
+                    <a href="Income.aspx"
+                       class='<%= GetActiveClass("Income.aspx") %>'>
+                        <span class="nav-icon">&#8593;</span>
+                        <span>Income</span>
+                    </a>
+
+                    <a href="ExpenseHistory.aspx"
+                       class='<%= GetActiveClass("ExpenseHistory.aspx") %>'>
+                        <span class="nav-icon">&#9776;</span>
+                        <span>Expense History</span>
+                    </a>
+
+                    <a href="MonthsSummary.aspx"
+                       class='<%= GetActiveClass("MonthsSummary.aspx") %>'>
+                        <span class="nav-icon">&#9636;</span>
+                        <span>Months Summary</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    Manage your money wisely.<br />
+                    My Finances &copy; 2026
+                </div>
+
+            </aside>
+
+            <!-- Page content -->
+            <main class="page-content">
+
+                <asp:ContentPlaceHolder
+                    ID="MainContent"
+                    runat="server">
+                </asp:ContentPlaceHolder>
+
+            </main>
+
+        </div>
+
+    </form>
+</body>
+</html>
